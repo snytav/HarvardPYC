@@ -11,5 +11,9 @@ def GetDensity(r, L, J):
     ys_ctrl = np.loadtxt('ys.txt')
     eps1 = np.max(np.abs(ys-ys_ctrl))
 
+    js_plus_1 = np.mod(js, J) + 1
+    js_plus_1_ctrl = np.loadtxt('js_plus_1.txt')
+    eps2 = np.max(np.abs(js_plus_1_ctrl - js_plus_1))
+
 
     return 0
