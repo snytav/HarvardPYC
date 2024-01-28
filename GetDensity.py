@@ -30,8 +30,8 @@ def GetDensity(r, L, J):
     # n22 = np.roll(n22, 1)
     # n21 = np.roll(n21, 1)
     n2 = n21 + n22
-    n2_ctrl= np.loadtxt('n.txt')
+    n2_ctrl= np.loadtxt('ne.txt')
     eps4 = np.max(np.abs(n2_ctrl - n2))
 
 
-    return 0
+    return n2
