@@ -25,4 +25,13 @@ def GetDensity(r, L, J):
     #TODO^ make circular shift for n1
     eps3 = np.max(np.abs(n1_ctrl - n1))
 
+    n21 = accumarray(js.astype(int)-1, (1 - ys) / dx)
+    n22 = accumarray(js_plus_1.astype(int)-1, ys / dx)
+    # n22 = np.roll(n22, 1)
+    # n21 = np.roll(n21, 1)
+    n2 = n21 + n22
+    n2_ctrl= np.loadtxt('n.txt')
+    eps4 = np.max(np.abs(n2_ctrl - n2))
+
+
     return 0
