@@ -15,7 +15,7 @@ shutil.copy('../harvardexample/1_m_ys_ds.txt','1_m_ys_ds.txt')
 shutil.copy('../harvardexample/js.txt','js.txt')
 shutil.copy('../harvardexample/js_plus_1.txt','js_plus_1.txt')
 shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
-
+shutil.copy('../harvardexample/ys_dx.txt','ys_dx.txt')
 shutil.copy('../harvardexample/n2_m.txt','n2_m.txt')
 shutil.copy('../harvardexample/n.txt','n.txt')
 # shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')

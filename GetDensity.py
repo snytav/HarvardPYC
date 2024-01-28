@@ -1,4 +1,5 @@
 import numpy as np
+from accum import accumarray
 
 def GetDensity(r, L, J):
     dx = L / J
@@ -14,6 +15,18 @@ def GetDensity(r, L, J):
     js_plus_1 = np.mod(js, J) + 1
     js_plus_1_ctrl = np.loadtxt('js_plus_1.txt')
     eps2 = np.max(np.abs(js_plus_1_ctrl - js_plus_1))
+
+   # n1 = accumarray(js, (1 - ys) / dx, [J, 1]);
+    n1_ctrl = np.loadtxt('n2_m.txt')
+    ys_dx_ctrl = np.loadtxt('ys_dx.txt')
+    eps_ys = np.max(np.abs(ys_dx_ctrl - ys/dx))
+    n1 = accumarray(js.astype(int)-1, ys/ dx)
+    n1 = np.roll(n1, 1)
+    #TODO^ make circular shift for n1
+    eps3 = np.max(np.abs(n1_ctrl - n1))
+
+
+
 
 
     return 0
