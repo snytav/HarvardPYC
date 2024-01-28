@@ -25,8 +25,4 @@ def GetDensity(r, L, J):
     #TODO^ make circular shift for n1
     eps3 = np.max(np.abs(n1_ctrl - n1))
 
-
-
-
-
     return 0
