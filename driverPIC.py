@@ -5,6 +5,7 @@ import shutil
 from GetDensity import GetDensity
 
 shutil.copy('../harvardexample/0R.txt','0R.txt')
+shutil.copy('../harvardexample/0V.txt','0V.txt')
 shutil.copy('../harvardexample/js.txt','js.txt')
 shutil.copy('../harvardexample/ys.txt','ys.txt')
 shutil.copy('../harvardexample/js_plus_1.txt','js_plus_1.txt')
@@ -34,20 +35,23 @@ r = np.loadtxt('0R.txt')
 
 ne = GetDensity(r,L,J)
 
+v = np.loadtxt('0V.txt')
 #initialize solution
 t = 0
                                  # seed the rand generator
-r = L*random.uniform(0,1,N)             # electron positions
-#dlmwrite('r.txt',r,'delimiter','\t','precision','%25.15e');
-v = double_maxwellian(N,vb)             # electron velocities
+# r = L*random.uniform(0,1,N)             # electron positions
+# dlmwrite('r.txt',r,'delimiter','\t','precision','%25.15e');
+# from double_maxwellian import double_maxwellian
+# v = double_maxwellian(N,vb)             # electron velocities
 #dlmwrite('v.txt',v,'delimiter','\t','precision','%25.15e');
 
 #evolve solution
 while t<=tmax:
     # load r,v into a single vector
-    solution_coeffs = np.concatenate(r,v)
+    solution_coeffs = np.concatenate((r,v))
     
     # take a 4th order Runge-Kutta timestep
+    from AssembleRHS import AssembleRHS
     k1 = AssembleRHS(solution_coeffs,L,J,N)
     k2 = AssembleRHS(solution_coeffs + 0.5*dt*k1,L,J,N)
     k3 = AssembleRHS(solution_coeffs + 0.5*dt*k2,L,J,N)

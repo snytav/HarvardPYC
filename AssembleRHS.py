@@ -1,4 +1,6 @@
 import numpy as np
+from GetDensity import GetDensity
+
 def AssembleRHS( solution_coeffs, L, J,N ):
     r = solution_coeffs[0:N-1]    
     v = solution_coeffs[N:2*N - 1]
