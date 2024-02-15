@@ -10,16 +10,16 @@ def GetDensity(r, L, J):
 
     ys = r / dx - (js - 1)
     ys_ctrl = np.loadtxt('ys.txt')
-    eps1 = np.max(np.abs(ys-ys_ctrl))
+    # eps1 = np.max(np.abs(ys-ys_ctrl))
 
     js_plus_1 = np.mod(js, J) + 1
     js_plus_1_ctrl = np.loadtxt('js_plus_1.txt')
-    eps2 = np.max(np.abs(js_plus_1_ctrl - js_plus_1))
+#    eps2 = np.max(np.abs(js_plus_1_ctrl - js_plus_1))
 
    # n1 = accumarray(js, (1 - ys) / dx, [J, 1]);
     n1_ctrl = np.loadtxt('n2_m.txt')
     ys_dx_ctrl = np.loadtxt('ys_dx.txt')
-    eps_ys = np.max(np.abs(ys_dx_ctrl - ys/dx))
+  # eps_ys = np.max(np.abs(ys_dx_ctrl - ys/dx))
     n1 = accumarray(js.astype(int)-1, ys/ dx)
     n1 = np.roll(n1, 1)
     #TODO^ make circular shift for n1

@@ -10,6 +10,7 @@ def AssembleRHS( solution_coeffs, L, J,N ):
     # Solve Poisson equation
     n0 = N/L
     rho = ne/n0 - 1
+    from Poisson1D import Poisson1D
     phi = Poisson1D( rho, L )
     # Calculate electric field
     E = GetElectric( phi, L )
