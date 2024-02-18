@@ -5,12 +5,16 @@ def Poisson1D( v, L ):
  # # using spectral method
   J = v.shape[0]
   #  Fourier transform source term
+  v_ml = np.loadtxt('v.txt')
+  eps_v = np.max(np.abs(v_ml - v))
   v_tilde = np.fft.fft(v)
+  vm = np.loadtxt('v_real.txt')
+  eps_v_tilde = np.max(np.abs(vm-np.real(v_tilde)))
   # vector of wave numbers
   k1 = np.linspace(0, int(J / 2) - 1, int(J / 2))
   k2 = np.linspace(-int(J / 2), -1, int(J / 2))
-  k = (2*np.pi/L)*np.concatenate(k1,k2)
-  k = np.zeros(J)
+  k = (2*np.pi/L)*np.concatenate((k1,k2))
+  # k = np.zeros(J)
 #  k = (2*np.pi/L)*[0:(J/2-1),(-J/2):(-1)]
   k[0]= 1
   # Calculate Fourier transform of u

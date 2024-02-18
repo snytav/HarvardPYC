@@ -4,25 +4,11 @@ import double_maxwellian
 import shutil
 from GetDensity import GetDensity
 
-shutil.copy('../harvardexample/0R.txt','0R.txt')
-shutil.copy('../harvardexample/0V.txt','0V.txt')
-shutil.copy('../harvardexample/js.txt','js.txt')
-shutil.copy('../harvardexample/ys.txt','ys.txt')
-shutil.copy('../harvardexample/js_plus_1.txt','js_plus_1.txt')
-shutil.copy('../harvardexample/n1_m.txt','n1_m.txt')
-shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
-
-shutil.copy('../harvardexample/1_m_ys_ds.txt','1_m_ys_ds.txt')
-shutil.copy('../harvardexample/js.txt','js.txt')
-shutil.copy('../harvardexample/js_plus_1.txt','js_plus_1.txt')
-shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
-shutil.copy('../harvardexample/ys_dx.txt','ys_dx.txt')
-shutil.copy('../harvardexample/n2_m.txt','n2_m.txt')
-shutil.copy('../harvardexample/n.txt','n.txt')
-shutil.copy('../harvardexample/ne.txt','ne.txt')
-# shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
-# shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
-# shutil.copy('../harvardexample/ys_ds.txt','ys_ds.txt')
+import glob
+for fn in glob.glob('../harvardexample/*.txt'):
+  print(fn)
+  real_fn = fn.split('\\')[-1]
+  shutil.copy(fn,real_fn)
 
 L = 100    # domain of solution 0 <= x <= L
 N = 20000  # number of electrons
@@ -33,7 +19,7 @@ tmax = 80  # simulation run from t = 0 to t = tmax
 
 r = np.loadtxt('0R.txt')
 
-ne = GetDensity(r,L,J)
+ne = GetDensity(r,L,J,0.0)
 
 v = np.loadtxt('0V.txt')
 #initialize solution
