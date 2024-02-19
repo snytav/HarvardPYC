@@ -19,7 +19,7 @@ tmax = 80  # simulation run from t = 0 to t = tmax
 
 r = np.loadtxt('0R.txt')
 
-ne = GetDensity(r,L,J,0.0)
+ne = GetDensity(r,L,J,-0.5)
 
 v = np.loadtxt('0V.txt')
 #initialize solution
