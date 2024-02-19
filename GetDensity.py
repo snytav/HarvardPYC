@@ -28,6 +28,8 @@ def GetDensity(r, L, J,t):
     eps_n1 = np.max(np.abs(n1_ctrl - n1))
 
     n = n1+n2
+    n_ctrl = np.loadtxt('n_m_' + '{:5f}'.format(t) + '.txt')
+    eps_n  = np.max(np.abs(n_ctrl - n))
     # n = accumarray(js, (1 - ys) / dx, [J, 1]) + ...
     # accumarray(js_plus_1, ys / dx, [J, 1]);
 
