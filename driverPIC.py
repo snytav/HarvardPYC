@@ -38,10 +38,10 @@ while t<=tmax:
     
     # take a 4th order Runge-Kutta timestep
     from AssembleRHS import AssembleRHS
-    k1 = AssembleRHS(solution_coeffs,L,J,N)
-    k2 = AssembleRHS(solution_coeffs + 0.5*dt*k1,L,J,N)
-    k3 = AssembleRHS(solution_coeffs + 0.5*dt*k2,L,J,N)
-    k4 = AssembleRHS(solution_coeffs + dt*k3,L,J,N)
+    k1 = AssembleRHS(solution_coeffs,L,J,N,t)
+    k2 = AssembleRHS(solution_coeffs + 0.5*dt*k1,L,J,N,t+0.25*dt)
+    k3 = AssembleRHS(solution_coeffs + 0.5*dt*k2,L,J,N,t+0.5*dt)
+    k4 = AssembleRHS(solution_coeffs + dt*k3,L,J,N,t+0.75*dt)
     solution_coeffs = solution_coeffs + dt/6*(k1+2*k2+2*k3+k4)
     # unload solution coefficients
     r = solution_coeffs[0:N-1]

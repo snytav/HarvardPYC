@@ -30,9 +30,10 @@ def GetDensity(r, L, J,t):
     n = n1+n2
     n_ctrl = np.loadtxt('n_m_' + '{:5f}'.format(t) + '.txt')
     eps_n  = np.max(np.abs(n_ctrl - n))
-    # n = accumarray(js, (1 - ys) / dx, [J, 1]) + ...
-    # accumarray(js_plus_1, ys / dx, [J, 1]);
-
+    return n
+    # # n = accumarray(js, (1 - ys) / dx, [J, 1]) + ...
+    # # accumarray(js_plus_1, ys / dx, [J, 1]);
+    #
     # n_ctrl = np.loadtxt('n_m_' + '{:5f}'.format(t) + '.txt')
     # eps_n  = np.max(np.abs(n_ctrl - n))
     #
@@ -48,7 +49,7 @@ def GetDensity(r, L, J,t):
     # # n22 = np.roll(n22, 1)
     # # n21 = np.roll(n21, 1)
     # n2 = n21 + n22
-    # n2_ctrl= np.loadtxt('ne.txt')
+    # n2_ctrl = p.loadtxt('n_m_' + '{:5f}'.format(t) + '.txt')
     # eps4 = np.max(np.abs(n2_ctrl - n2))
 
 

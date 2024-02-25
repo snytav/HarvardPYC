@@ -2,8 +2,8 @@ import numpy as np
 from GetDensity import GetDensity
 
 def AssembleRHS( solution_coeffs, L, J,N,t ):
-    r = solution_coeffs[0:N-1]    
-    v = solution_coeffs[N:2*N - 1]
+    r = solution_coeffs[0:N]
+    v = solution_coeffs[N:2*N]
     r = r + L*(r<0) - L*(r>L)
     #  Calculate electron number density
     ne = GetDensity( r, L, J,t )
@@ -11,9 +11,10 @@ def AssembleRHS( solution_coeffs, L, J,N,t ):
     n0 = N/L
     rho = ne/n0 - 1
     from Poisson1D import Poisson1D
-    phi = Poisson1D( rho, L,t )
+    phi = Poisson1D( rho, L)
     # Calculate electric field
-    E = GetElectric( phi, L )
+    from electric import GetElectric
+    E = GetElectric( phi, L,t )
     # equations of motion
     dx = L/J
     js = floor(r/dx)+1
