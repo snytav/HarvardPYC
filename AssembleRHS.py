@@ -26,6 +26,7 @@ def AssembleRHS( solution_coeffs, L, J,N,t ):
     ys_ctrl = np.loadtxt('ys_Eint_' + '{:5f}'.format(t) + '.txt')
     eps_ys = np.max(np.abs(ys-ys_ctrl))
    # jsE_ctrl = np.loadtxt('js_E_int_' + '{:5f}'.format(t) + '.txt')
+   #  NB value 4 at control set from Matlab
     js_plus_1_ctrl = np.loadtxt('js_plus_1_E_int_' + '{:5f}'.format(t) + '.txt')
     js_plus_1 = np.mod(js+1,J).astype(int)
    # diff_js = np.max(np.abs(js+1-jsE_ctrl))
@@ -34,7 +35,7 @@ def AssembleRHS( solution_coeffs, L, J,N,t ):
     Efield1_ctrl = np.loadtxt('Efield1_' + '{:5f}'.format(t) + '.txt')
     Efield2_ctrl = np.loadtxt('Efield2_' + '{:5f}'.format(t) + '.txt')
     eps_E1 = np.max(np.abs(E[js]*(1-ys)-Efield1_ctrl))
-    eps_E2 = np.max(np.abs(E[js_plus_1]-Efield1_ctrl))
+    eps_E2 = np.max(np.abs(E[js_plus_1]-Efield2_ctrl))
     Efield_ctrl = np.loadtxt('Efield_' + '{:5f}'.format(t) + '.txt')
     eps_E_long = np.max(np.abs(Efield_ctrl - Efield))
     rdot = v
